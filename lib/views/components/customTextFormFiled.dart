@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-Widget customTextFormFieldEmail(hintText, controllerTextEmail) {
+Widget customTextFormField(hintText, textInputType, controllerTextEmail) {
   return TextFormField(
     controller: controllerTextEmail,
     decoration: InputDecoration(
@@ -24,6 +23,6 @@ Widget customTextFormFieldEmail(hintText, controllerTextEmail) {
             borderRadius: BorderRadius.circular(10.0),
             borderSide:
                 const BorderSide(color: Color.fromARGB(255, 65, 95, 214)))),
-    keyboardType: TextInputType.emailAddress,
+    keyboardType: textInputType,
   );
 }

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/button.dart';
-import '../components/textFormFiledEmail.dart';
+import '../components/customTextFormFiled.dart';
 import '../components/textFormFiledPassword.dart';
 
 class LoginPage extends StatelessWidget {
@@ -26,8 +26,7 @@ class LoginPage extends StatelessWidget {
             Navigator.pushNamed(context, 'lobby');
           } else if (state.status == false) {
             ScaffoldMessenger.of(_).showSnackBar(SnackBar(
-              content:
-                  Text(state.data,
+              content: Text(state.data,
                   style: GoogleFonts.montserrat(
                       textStyle: const TextStyle(
                           fontSize: 14,
@@ -50,8 +49,8 @@ class LoginPage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width * 0.09),
-                  child: customTextFormFieldEmail(
-                      'Correo electrónico', emailTextController),
+                  child: customTextFormField('Correo electrónico',
+                      TextInputType.emailAddress, emailTextController),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                 Container(
