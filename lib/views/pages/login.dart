@@ -2,6 +2,7 @@ import 'package:cupcar_mobile/bloc/login/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../components/button.dart';
 import '../components/textFormFiledEmail.dart';
@@ -23,10 +24,16 @@ class LoginPage extends StatelessWidget {
         listener: (_, state) {
           if (state.status == true) {
             Navigator.pushNamed(context, 'lobby');
-          } else {
+          } else if (state.status == false) {
             ScaffoldMessenger.of(_).showSnackBar(SnackBar(
               content:
-                  Text(state.data.toString()), // show notification with message
+                  Text(state.data,
+                  style: GoogleFonts.montserrat(
+                      textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 255, 255,
+                              255)))), // show notification with message
               backgroundColor: Colors.red,
             ));
           }
@@ -44,47 +51,55 @@ class LoginPage extends StatelessWidget {
                   margin: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width * 0.09),
                   child: customTextFormFieldEmail(
-                      'Correo electrónico',
-                      'Por favor ingrese un correo electrónico',
-                      emailTextController),
+                      'Correo electrónico', emailTextController),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                 Container(
                   margin: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width * 0.09),
-                  child: CustomTextFormFieldPass('Contraseña',
-                      'Ingrese su contraseña', passwordTextController),
+                  child: CustomTextFormFieldPass(
+                      'Contraseña', passwordTextController),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.09),
-                  child: const Align(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.09),
+                    child: Align(
                       alignment: Alignment.centerRight,
                       child: Text('¿Olvidaste tu contraseña?',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 65, 95, 214)))),
-                ),
+                          style: GoogleFonts.montserrat(
+                              textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromARGB(255, 65, 95, 214)))),
+                    )),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.06),
                 state
                         .loading // show CircularProgressIndicator if loading is true
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : customButton(
                         context, emailTextController, passwordTextController),
                 SizedBox(height: MediaQuery.of(context).size.width * 0.06),
-                const Text(
-                  'Si aún no eres parte del equipo CupCar',
-                  style: TextStyle(color: Color.fromARGB(255, 65, 95, 214)),
-                ),
-                const Text(
-                  'toca aquí',
-                  style: TextStyle(color: Color.fromARGB(255, 65, 95, 214)),
-                )
+                Text('Si aún no eres parte de CupCar',
+                    style: GoogleFonts.montserrat(
+                        textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromARGB(255, 65, 95, 214)))),
+                InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'signUp');
+                    },
+                    child: Text('toca aquí.',
+                        style: GoogleFonts.montserrat(
+                            textStyle: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color.fromARGB(255, 65, 95, 214)))))
               ],
             ),
           );
-        }
-        ),
+        }),
       ),
     );
   }

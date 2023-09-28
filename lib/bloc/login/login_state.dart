@@ -2,13 +2,13 @@ part of "login_bloc.dart";
 
 class LoginState {
   final bool obscureText;
-  final bool status;
+  final bool? status;
   final String data;
   final bool loading;
 
   LoginState(
       {this.obscureText = true,
-      this.status = false,
+      this.status,
       this.data = '',
       this.loading = false});
 
@@ -19,6 +19,4 @@ class LoginState {
           status: status ?? this.status,
           data: data ?? this.data,
           loading: loading ?? this.loading);
-
-  LoginState initialState() => LoginState();
 }

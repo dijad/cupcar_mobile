@@ -1,11 +1,19 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-Widget customTextFormFieldEmail(hintText, emptyMessage, controllerTextEmail) {
+
+Widget customTextFormFieldEmail(hintText, controllerTextEmail) {
   return TextFormField(
     controller: controllerTextEmail,
     decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: GoogleFonts.montserrat(
+          textStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         prefixIcon:
             const Icon(Icons.email, color: Color.fromARGB(255, 65, 95, 214)),
         enabledBorder: OutlineInputBorder(

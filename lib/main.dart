@@ -1,6 +1,8 @@
-import 'package:cupcar_mobile/views/pages/lobby.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:cupcar_mobile/views/pages/lobby.dart';
+import 'package:cupcar_mobile/views/pages/sign_up.dart';
 
 import 'package:cupcar_mobile/views/pages/login.dart';
 import 'bloc/login/login_bloc.dart';
@@ -18,6 +20,7 @@ void main() => runApp(MultiBlocProvider(
         routes: {
           'login': (context) => const LoginPage(),
           'lobby': (context) => const LobbyPage(),
+          'signUp': (context) => const SignUpPage(),
           // Add more routes here
         },
       ),

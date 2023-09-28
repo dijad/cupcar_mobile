@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:cupcar_mobile/bloc/login/login_bloc.dart';
 
 // ignore: must_be_immutable
 class CustomTextFormFieldPass extends StatelessWidget {
   CustomTextFormFieldPass(
-      this.hintText, this.emptyMessage, this.controllerTextPass,
+      this.hintText, this.controllerTextPass,
       {super.key});
 
   final TextEditingController controllerTextPass;
-  late String emptyMessage;
   late String hintText;
 
   @override
@@ -24,6 +24,12 @@ class CustomTextFormFieldPass extends StatelessWidget {
           obscureText: state.obscureText,
           decoration: InputDecoration(
               hintText: hintText,
+              hintStyle: GoogleFonts.montserrat(
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
               prefixIcon: const Icon(Icons.lock,
                   color: Color.fromARGB(255, 65, 95, 214)),
               suffixIcon: IconButton(
