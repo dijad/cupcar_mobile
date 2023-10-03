@@ -5,15 +5,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:cupcar_mobile/bloc/login/login_bloc.dart';
 
-Widget customButton(context, emailController, passController) {
+Widget customButtonLogin(context, form) {
   final loginBloc = BlocProvider.of<LoginBloc>(context);
   ScreenUtil.init(context);
+
+  late double width = MediaQuery.of(context).size.width;
 
   return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
     return ElevatedButton(
       onPressed: () {
         loginBloc.add(
-            SendCredentialsEvent(emailController.text, passController.text));
+            SendCredentialsEvent(
+            form.control('email').value, form.control('password').value));
       },
       style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -22,12 +25,11 @@ Widget customButton(context, emailController, passController) {
           backgroundColor: const Color.fromARGB(255, 65, 95, 214),
           fixedSize:
               Size(ScreenUtil().setWidth(290), ScreenUtil().setHeight(40)),
-          padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.09)),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.09)),
       child: Text('Ingresar',
           style: GoogleFonts.montserrat(
               textStyle: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Color.fromARGB(255, 255, 255, 255)))),
     );

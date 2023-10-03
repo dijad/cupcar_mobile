@@ -11,7 +11,8 @@ class LobbyPage extends StatelessWidget {
     ScreenUtil.init(context);
 
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-      return const Scaffold(body: Center(child: Text('hola')));
+      return const Scaffold(
+          body: SingleChildScrollView(child: Center(child: Text('hola'))));
     });
   }
 }

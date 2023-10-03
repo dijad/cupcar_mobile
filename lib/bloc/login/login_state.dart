@@ -16,7 +16,7 @@ class LoginState {
           {bool? obscureText, bool? status, String? data, bool? loading}) =>
       LoginState(
           obscureText: obscureText ?? this.obscureText,
-          status: status ?? this.status,
+          status: status,
           data: data ?? this.data,
           loading: loading ?? this.loading);
 }
